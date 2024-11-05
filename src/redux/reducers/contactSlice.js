@@ -12,11 +12,22 @@ export const fetchAllContactsAsync = createAsyncThunk(
     }
   }
 );
+export const fetchAllDemosAsync = createAsyncThunk(
+  "contact/fetchAllDemosAsync",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/api/contacts/all-demos");
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
 
 const contactSlice = createSlice({
   name: "contact",
   initialState: {
-    contacts: [],
+    data: [],
     loading: false,
     error: null,
   },
@@ -31,9 +42,21 @@ const contactSlice = createSlice({
       })
       .addCase(fetchAllContactsAsync.fulfilled, (state, action) => {
         state.loading = false;
-        state.contacts = action.payload;
+        state.data = action.payload;
       })
       .addCase(fetchAllContactsAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchAllDemosAsync.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllDemosAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(fetchAllDemosAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

@@ -2,17 +2,9 @@ import React from "react";
 import "tailwindcss/tailwind.css";
 import { useDispatch, useSelector } from "react-redux";
 
-const Datatable = ({ headings, contacts }) => {
-  console.log(contacts, "contacts.");
-
-    // const headings = [
-    //   { key: "firstName", value: "First Name" },
-    //   { key: "lastName", value: "Last Name" },
-    //   { key: "emailAddress", value: "Email Address" },
-    //   { key: "phoneNumber", value: "Phone Number" },
-    //   { key: "service", value: "Service" },
-    //   { key: "message", value: "Message" },
-    // ];
+const Datatable = ({ headings, data }) => {
+  console.log(headings, "headings.");
+  console.log(data, "data.");
 
   return (
     <div className="antialiased sans-serif  h-screen">
@@ -73,8 +65,8 @@ const Datatable = ({ headings, contacts }) => {
               </tr>
             </thead>
             <tbody>
-              {contacts &&
-                contacts?.map((contact) => (
+              {data &&
+                data?.map((contact) => (
                   <tr key={contact._id}>
                     <td className="border-dashed border-t border-gray-200 px-3">
                       <label className="text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
@@ -86,37 +78,15 @@ const Datatable = ({ headings, contacts }) => {
                       </label>
                     </td>
 
-                    <td className="border-dashed border-t border-gray-200 firstName">
-                      <span className="text-gray-700 px-6 py-3 flex items-center">
-                        {contact.firstName}
-                      </span>
-                    </td>
-                    <td className="border-dashed border-t border-gray-200 lastName">
-                      <span className="text-gray-700 px-6 py-3 flex items-center">
-                        {contact.lastName}
-                      </span>
-                    </td>
-                    <td className="border-dashed border-t border-gray-200 emailAddress">
-                      <span className="text-gray-700 px-6 py-3 flex items-center">
-                        {contact.email}
-                      </span>
-                    </td>
-
-                    <td className="border-dashed border-t border-gray-200 phoneNumber">
-                      <span className="text-gray-700 px-6 py-3 flex items-center">
-                        {contact.phone}
-                      </span>
-                    </td>
-                    <td className="border-dashed border-t border-gray-200 phoneNumber">
-                      <span className="text-gray-700 px-6 py-3 flex items-center">
-                        {contact.service}
-                      </span>
-                    </td>
-                    <td className="border-dashed border-t border-gray-200 phoneNumber">
-                      <span className="text-gray-700 px-6 py-3 flex items-center">
-                        {contact.message}
-                      </span>
-                    </td>
+                    {headings.map((heading) => (
+                      <td 
+                        key={heading.key}
+                      className="border-dashed border-t border-gray-200 phoneNumber">
+                        <span className="text-gray-700 px-6 py-3 flex items-center">
+                          {contact[heading.key]}
+                        </span>
+                      </td>
+                    ))}
                   </tr>
                 ))}
             </tbody>
