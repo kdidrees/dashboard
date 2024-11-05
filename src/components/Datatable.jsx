@@ -1,42 +1,19 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const Datatable = () => {
+  const { contacts } = useSelector((state) => state.contact.contacts);
+
+  console.log(contacts, "contacts.");
+
   const headings = [
-    { key: "firstName", value: "First Name" },
+    { key: contacts.firstName, value: "First Name" },
     { key: "lastName", value: "Last Name" },
     { key: "emailAddress", value: "Email Address" },
     { key: "phoneNumber", value: "Phone Number" },
     { key: "service", value: "Service" },
     { key: "message", value: "Message" },
-  ];
-
-  const users = [
-    {
-      firstName: "John",
-      lastName: "Doe",
-      emailAddress: "john@example.com",
-      service: "Web Development",
-      phoneNumber: "123-456-7890",
-      message: "this is enquiry",
-    },
-    {
-      firstName: "John",
-      lastName: "Doe",
-      emailAddress: "john@example.com",
-      service: "Web Development",
-      phoneNumber: "123-456-7890",
-      message: "this is enquiry",
-    },
-    {
-      firstName: "John",
-      lastName: "Doe",
-      emailAddress: "john@example.com",
-      service: "Web Development",
-      phoneNumber: "123-456-7890",
-      message: "this is enquiry",
-    },
-    // Add more users as needed
   ];
 
   return (
@@ -98,55 +75,47 @@ const Datatable = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => (
-                <tr key={user.userId}>
+              {contacts.map((contact) => (
+                <tr key={contact._id}>
                   <td className="border-dashed border-t border-gray-200 px-3">
                     <label className="text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
                       <input
                         type="checkbox"
                         className="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline"
-                        name={user.userId}
+                        name={contact._id}
                       />
                     </label>
                   </td>
-                  {/* <td className="border-dashed border-t border-gray-200 userId">
-                    <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.userId}
-                    </span>
-                  </td> */}
+
                   <td className="border-dashed border-t border-gray-200 firstName">
                     <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.firstName}
+                      {contact.firstName}
                     </span>
                   </td>
                   <td className="border-dashed border-t border-gray-200 lastName">
                     <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.lastName}
+                      {contact.lastName}
                     </span>
                   </td>
                   <td className="border-dashed border-t border-gray-200 emailAddress">
                     <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.emailAddress}
+                      {contact.email}
                     </span>
                   </td>
-                  {/* <td className="border-dashed border-t border-gray-200 gender">
-                    <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.gender}
-                    </span>
-                  </td> */}
+
                   <td className="border-dashed border-t border-gray-200 phoneNumber">
                     <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.phoneNumber}
+                      {contact.phone}
                     </span>
                   </td>
                   <td className="border-dashed border-t border-gray-200 phoneNumber">
                     <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.service}
+                      {contact.service}
                     </span>
                   </td>
                   <td className="border-dashed border-t border-gray-200 phoneNumber">
                     <span className="text-gray-700 px-6 py-3 flex items-center">
-                      {user.message}
+                      {contact.message}
                     </span>
                   </td>
                 </tr>
