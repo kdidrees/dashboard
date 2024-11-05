@@ -5,7 +5,7 @@ export default function Sidebar() {
   return (
     <>
       <aside className="flex">
-        <div className="flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700">
+        <div className="flex shadow-xl flex-col items-center w-16 h-screen py-8 space-y-8 bg-white dark:bg-gray-900 dark:border-gray-700">
           <Link to={`/`}>
             <img
               className="w-auto h-6"
@@ -14,7 +14,7 @@ export default function Sidebar() {
             />
           </Link>
           <Link
-            to={"/contacts"}
+            to={"/companies"}
             className="p-1.5 text-gray-500 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-400 dark:hover:bg-gray-800 hover:bg-gray-100"
           >
             <svg
@@ -33,7 +33,7 @@ export default function Sidebar() {
             </svg>
           </Link>
           <Link
-            to={"/demos"}
+            to={"/contacts"}
             className="p-1.5 text-blue-500 transition-colors duration-200 bg-blue-100 rounded-lg dark:text-blue-400 dark:bg-gray-800"
           >
             <svg
@@ -52,7 +52,7 @@ export default function Sidebar() {
             </svg>
           </Link>
           <Link
-            to={"/companies"}
+            to={"/demos"}
             className="p-1.5 text-gray-500 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-400 dark:hover:bg-gray-800 hover:bg-gray-100"
           >
             <svg

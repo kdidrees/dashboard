@@ -23,6 +23,17 @@ export const fetchAllDemosAsync = createAsyncThunk(
     }
   }
 );
+export const fetchAllCompaniesAsync = createAsyncThunk(
+  "contact/fetchAllCompaniesAsync",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/api/companies/all");
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response);
+    }
+  }
+);
 
 const contactSlice = createSlice({
   name: "contact",
@@ -57,6 +68,18 @@ const contactSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchAllDemosAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchAllCompaniesAsync.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllCompaniesAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(fetchAllCompaniesAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

@@ -21,7 +21,7 @@ export default function Contact() {
   }, []);
   return (
     <>
-      <Datatable headings={headings} data={contacts} />
+      <Datatable headings={headings} data={contacts} pageName="Contacts" />
     </>
   );
 }

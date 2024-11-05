@@ -23,7 +23,7 @@ export default function Demo() {
   }, []);
   return (
     <>
-      <Datatable headings={headings} data={demos} />
+      <Datatable headings={headings} data={demos} pageName="Demos" />
     </>
   );
 }

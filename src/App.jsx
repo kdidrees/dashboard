@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import Index from "./components/Layout";
 import Contact from "./pages/contact.jsx";
 import Demo from "./pages/demo.jsx";
+import Company from "./pages/companies.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" exact element={<Index />}>
         <Route path="contacts" element={<Contact />} />
         <Route path="demos" element={<Demo />} />
+        <Route path="companies" element={<Company />} />
       </Route>
     </Routes>
   );
