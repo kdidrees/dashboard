@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Sidebar() {
+  const location = useLocation();
+
   return (
     <>
       <aside className="flex">
@@ -15,7 +17,11 @@ export default function Sidebar() {
           </Link>
           <Link
             to={"/companies"}
-            className="p-1.5 text-gray-500 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-400 dark:hover:bg-gray-800 hover:bg-gray-100"
+            className={`p-1.5 transition-colors duration-200 rounded-lg ${
+              location.pathname === "/companies"
+                ? "text-blue-500 bg-blue-100 dark:bg-gray-800"
+                : "text-gray-500 dark:text-gray-400 bg-white hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +40,11 @@ export default function Sidebar() {
           </Link>
           <Link
             to={"/contacts"}
-            className="p-1.5 text-blue-500 transition-colors duration-200 bg-blue-100 rounded-lg dark:text-blue-400 dark:bg-gray-800"
+            className={`p-1.5 transition-colors duration-200 rounded-lg ${
+              location.pathname === "/contacts"
+                ? "text-blue-500 bg-blue-100 dark:bg-gray-800"
+                : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +63,11 @@ export default function Sidebar() {
           </Link>
           <Link
             to={"/demos"}
-            className="p-1.5 text-gray-500 focus:outline-nones transition-colors duration-200 rounded-lg dark:text-gray-400 dark:hover:bg-gray-800 hover:bg-gray-100"
+            className={`p-1.5 transition-colors duration-200 rounded-lg ${
+              location.pathname === "/demos"
+                ? "text-blue-500 bg-blue-100 dark:bg-gray-800"
+                : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
