@@ -12,7 +12,8 @@ export default function Contact() {
       { key: "lastName", value: "Last Name" },
       { key: "email", value: "Email Address" },
       { key: "phone", value: "Phone Number" },
-      { key: "service", value: "Service" },
+      { key: "companyName", value: "Company Name" },
+      { key: "serviceType", value: "Service Type" },
       { key: "message", value: "Message" },
     ] || [];
 
